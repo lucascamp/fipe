@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Card, ListGroup, ListGroupItem, Dropdown } from 'react-bootstrap';
+import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 import Brands from './Brands.js';
 
