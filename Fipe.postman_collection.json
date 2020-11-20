@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "4df8f077-fe6d-47e9-ba70-2c6824cb1550",
+		"name": "Fipe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get marcas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fipeapi.appspot.com/api/1/carros/marcas.json",
+					"protocol": "http",
+					"host": [
+						"fipeapi",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"carros",
+						"marcas.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get modelos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fipeapi.appspot.com/api/1/carros/veiculos/21.json",
+					"protocol": "http",
+					"host": [
+						"fipeapi",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"carros",
+						"veiculos",
+						"21.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get carro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://fipeapi.appspot.com/api/1/carros/veiculo/21/4826.json",
+					"protocol": "http",
+					"host": [
+						"fipeapi",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"1",
+						"carros",
+						"veiculo",
+						"21",
+						"4826.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get carro ano",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
