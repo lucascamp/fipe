@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 
 import { Dropdown } from 'react-bootstrap';
 
+import Cars from './Cars.js';
+
 class Brands extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-        cars: [],
-        isLoaded: false,
+            cars: [],
+            isLoaded: false,
+            brand: 21,
         }
     }
 
@@ -31,28 +34,36 @@ class Brands extends Component {
         }
 
         else {
-            console.log(brands);
             return (
             <div className="App">
 
-                <Dropdown>
-                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                        Selecione a marca
-                    </Dropdown.Toggle>
+            <div>
+                <select onChange={(e) => this.setState({ brand: e.target.value })}>
+                    { brands.map( brand => (
+                                <option value={ brand.id }>{ brand.name }</option>
+                            )
+                        )
+                    };
+                </select>
+            </div>
 
-                    <Dropdown.Menu>
-                                { brands.map( brand => (
-                                    <Dropdown.Item href="#">{ brand.name }</Dropdown.Item>
-                                    )
-                                )
-                                };
-                </Dropdown.Menu>
-                </Dropdown>
+
+            {this.renderSelectedCard(this.state.brand)}
+
+            <Cars testeid={this.state.brand+'/4826/2013-1'} />
+                
 
             </div>
             );
         }
     }
+
+    renderSelectedCard(brand) {
+        
+    }
+
+
+
 }
 
 export default Brands
