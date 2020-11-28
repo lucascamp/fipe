@@ -9,10 +9,16 @@ class Brands extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cars: [],
-            isLoaded: false,
-            brand: 21,
+            isLoadedBrands: false,
+            isLoadedModels: false,
+            isLoadedYears: false,
+            brand: 0,
+            model: 0,
+            year: 0,
         }
+
+        this.changeModels = this.changeModels.bind(this);
+        this.changeYears = this.changeYears.bind(this);
     }
 
     componentDidMount() {
@@ -25,45 +31,83 @@ class Brands extends Component {
                 }) )
     }
 
+    changeModels(e) {
+        this.setState({ brand: e.target.value })
+
+        fetch('http://fipeapi.appspot.com/api/1/carros/veiculos/21.json')
+            .then(res => res.json())
+            .then(json =>
+                this.setState ({  
+                    models: json,
+                    isLoadedModels: true,
+            }) )
+    }
+
+    changeYears(e) {
+        this.setState({ model: e.target.value })
+
+        fetch('http://fipeapi.appspot.com/api/1/carros/veiculo/21/4828.json')
+            .then(res => res.json())
+            .then(json =>
+                this.setState ({  
+                    years: json,
+                    isLoadedYears: true,
+            }) )
+
+    }
+
     render() {
 
-        var { isLoadedBrands, brands } = this.state;
+        var { 
+            isLoadedBrands, brands,
+            models, years
+        } = this.state;
 
         if(!isLoadedBrands) {
             return <div> loading ...</div>
         }
 
-        else {
+        else if(isLoadedBrands) {
             return (
-            <div className="App">
-
-            <div>
-                <select onChange={(e) => this.setState({ brand: e.target.value })}>
+            <div className="brands">
+                <select onChange={this.changeModels} >
                     { brands.map( brand => (
                                 <option value={ brand.id }>{ brand.name }</option>
                             )
                         )
                     };
                 </select>
-            </div>
 
+                { this.state.isLoadedModels ? 
+                    <div className="models">
+                        <select onChange={this.changeYears} >
+                                { models.map( model => (
+                                            <option value={ model.id }>{ model.name }</option>
+                                        )
+                                    )
+                                };
+                            </select>
+                            </div> : 
+                null }
 
-            {this.renderSelectedCard(this.state.brand)}
+                { this.state.isLoadedYears ? 
+                    <div className="years">
+                        <select onChange={this.changeYears} >
+                                { years.map( year => (
+                                            <option value={ year.id }>{ year.name }</option>
+                                        )
+                                    )
+                                };
+                            </select>
+                            </div> : 
+                null }
 
-            <Cars testeid={this.state.brand+'/4826/2013-1'} />
-                
+                { this.state.isLoadedYears ? <Cars testeid={'21/4826/2013-1'} /> : null }
 
-            </div>
+    </div>
             );
         }
     }
-
-    renderSelectedCard(brand) {
-        
-    }
-
-
-
 }
 
 export default Brands
