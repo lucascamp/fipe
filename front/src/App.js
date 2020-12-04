@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
 import './App.css';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Brands from './Brands.js';
+import FipeComponent from './FipeComponent.js';
 
 
 class App extends Component {
@@ -14,7 +13,7 @@ class App extends Component {
       return (
         <div className="App">
 
-            <Brands />
+            <FipeComponent />
 
         </div>
       );

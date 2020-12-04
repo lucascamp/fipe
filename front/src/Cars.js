@@ -14,7 +14,7 @@ class Cars extends Component {
 
     componentDidMount() {
 
-        fetch(`http://fipeapi.appspot.com/api/1/carros/veiculo/${encodeURIComponent(this.props.testeid)}.json`)
+        fetch(`http://fipeapi.appspot.com/api/1/carros/veiculo/${encodeURIComponent(this.props.brandId)}/${encodeURIComponent(this.props.modelId)}/${encodeURIComponent(this.props.yearId)}.json`)
             .then(res => res.json())
             .then(json =>
                 this.setState ({  
@@ -28,14 +28,14 @@ class Cars extends Component {
         var { isLoadedCars, cars } = this.state;
 
         if(!isLoadedCars) {
-            return <div> loading ...</div>
+            return <div> <img src='https://i.pinimg.com/originals/07/24/88/0724884440e8ddd0896ff557b75a222a.gif'/> </div>
         }
 
         else {
             return (
                 
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="https://3.bp.blogspot.com/-2-HOM_lKNOM/VYhYyqKZe3I/AAAAAAACJwQ/gyFXu4i6y2o/s1600/Fiat-Palio-Fire-2016%2B%25282%2529.jpg" />
+                <Card.Img variant="top" src="https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/sedan/generic-car-upper-class-3d-model-115919.jpg" />
                         
                 <Card.Body>
                     <Card.Title>{ cars.marca } </Card.Title>
@@ -51,15 +51,6 @@ class Cars extends Component {
                     <ListGroupItem>Ano:         { cars.ano_modelo }</ListGroupItem>
                     <ListGroupItem>Preço:       { cars.preco }</ListGroupItem>
                 </ListGroup>
-
-                <Card.Body>
-                    <Button variant="info">Info</Button>{' '}
-                    <Button variant="light">Light</Button> <Button variant="dark">Dark</Button>{' '}
-                </Card.Body>
-
-                <Card.Body>
-                    <Card.Link href="#">Link</Card.Link>
-                </Card.Body>
             </Card>
             );
         }
